@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玻璃基板产业链深度研究</title>
+<style>
+:root {
+  --blue-900: #1e3a8a;
+  --blue-700: #1d4ed8;
+  --blue-500: #3b82f6;
+  --blue-400: #60a5fa;
+  --blue-300: #93c5fd;
+  --blue-100: #dbeafe;
+  --white: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --table-head: rgba(30, 58, 138, 0.6);
+  --highlight: rgba(96, 165, 250, 0.3);
+  --text-secondary: rgba(255, 255, 255, 0.75);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: linear-gradient(135deg, #0c1e4f, #1e3a8a, #2563eb, #3b82f6);
+  background-attachment: fixed;
+  color: var(--white);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 100px 24px 60px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero .subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--blue-300);
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.hero-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.hero-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  min-width: 220px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+
+.hero-card .number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--blue-300);
+  margin-bottom: 8px;
+}
+
+.hero-card .label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Section */
+section {
+  padding: 60px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.section-title .icon {
+  margin-right: 10px;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 36px;
+}
+
+/* Cards grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--blue-300);
+}
+
+.card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.card .tag {
+  display: inline-block;
+  background: rgba(96, 165, 250, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  margin: 4px 4px 4px 0;
+}
+
+/* Science section */
+.science-text {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Process steps */
+.process-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.step {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+}
+
+.step .step-num {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--blue-300);
+  margin-bottom: 2px;
+}
+
+.arrow {
+  color: var(--blue-400);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  min-width: 700px;
+}
+
+th {
+  background: var(--table-head);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--blue-300);
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.9rem;
+}
+
+tr:hover td {
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.highlight-cell {
+  background: rgba(96, 165, 250, 0.15);
+  font-weight: 600;
+  color: var(--blue-300);
+}
+
+/* Tech route cards */
+.route-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.route-card .company {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue-400);
+  margin-bottom: 6px;
+}
+
+.route-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+  color: var(--white);
+}
+
+.route-card .params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.route-card .param {
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.82rem;
+}
+
+.route-card .timeline {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.88rem;
+  color: var(--blue-300);
+  font-weight: 600;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 40px 0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-700), var(--blue-400), var(--blue-300));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  z-index: 1;
+}
+
+.timeline-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-400));
+  border: 3px solid rgba(255,255,255,0.3);
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.timeline-year {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blue-300);
+  margin-bottom: 6px;
+}
+
+.timeline-event {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.timeline-outlook {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.outlook-tag {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+}
+
+.outlook-tag strong {
+  color: var(--blue-300);
+}
+
+/* Bottlenecks */
+.bottleneck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.bottleneck-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.bottleneck-card:hover {
+  transform: translateY(-4px);
+}
+
+.bottleneck-card .b-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.bottleneck-card h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.bottleneck-card .severity {
+  font-size: 0.8rem;
+  color: #fbbf24;
+  letter-spacing: 2px;
+}
+
+.bottleneck-card .desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* Impact cards */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.impact-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform 0.3s;
+}
+
+.impact-card:hover {
+  transform: translateY(-4px);
+}
+
+.impact-card .i-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.impact-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.impact-card .data {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--blue-300);
+  margin: 8px 0;
+}
+
+.impact-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Industry chain */
+.chain-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.chain-block {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.chain-block h4 {
+  font-size: 1.1rem;
+  color: var(--blue-300);
+  margin-bottom: 14px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.chain-block ul {
+  list-style: none;
+}
+
+.chain-block li {
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.chain-block li::before {
+  content: '▸ ';
+  color: var(--blue-400);
+}
+
+/* Stocks */
+.stock-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  color: var(--blue-300);
+}
+
+.stock-table.cn th { background: rgba(220, 38, 38, 0.3); }
+.stock-table.global th { background: rgba(59, 130, 246, 0.3); }
+
+/* Risk matrix */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.risk-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.risk-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  color: var(--blue-300);
+}
+
+.risk-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.88rem;
+}
+
+.risk-item:last-child { border-bottom: none; }
+
+.risk-level {
+  font-size: 0.78rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.risk-high { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
+.risk-medium { background: rgba(251, 191, 36, 0.25); color: #fde68a; }
+.risk-low { background: rgba(34, 197, 94, 0.25); color: #86efac; }
+
+/* Conclusion */
+.conclusion {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.conclusion-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.conclusion-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  min-width: 260px;
+  max-width: 340px;
+}
+
+.conclusion-card .c-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.conclusion-card .c-label.certain { color: #86efac; }
+.conclusion-card .c-label.uncertain { color: #fde68a; }
+.conclusion-card .c-label.judge { color: var(--blue-300); }
+
+.conclusion-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.judgment-banner {
+  background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(96,165,250,0.1));
+  border: 1px solid rgba(96,165,250,0.3);
+  border-radius: 16px;
+  padding: 24px 36px;
+  margin-top: 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--blue-300);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+}
+
+footer p { margin: 4px 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 60px 16px 40px; }
+  .hero-cards { flex-direction: column; align-items: center; }
+  .hero-card { width: 100%; max-width: 320px; }
+  .timeline { flex-direction: column; align-items: center; }
+  .timeline::before { display: none; }
+  .timeline-item { max-width: 280px; }
+  .chain-container { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .process-steps { flex-direction: column; }
+  .arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>🔬 玻璃基板产业链深度研究</h1>
+  <p class="subtitle">下一代AI芯片封装的材料革命</p>
+  <div class="hero-cards">
+    <div class="hero-card">
+      <div class="number">10×</div>
+      <div class="label">互连密度提升</div>
+    </div>
+    <div class="hero-card">
+      <div class="number">50%</div>
+      <div class="label">功耗降低</div>
+    </div>
+    <div class="hero-card">
+      <div class="number">67.2%</div>
+      <div class="label">2028-2040 CAGR</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1. 科普区 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📋</span>什么是玻璃基板？</h2>
+    <p class="section-desc">AI封装时代的核心载体材料</p>
+
+    <div class="science-text">
+      玻璃基板（Glass Substrate）是一种以特殊玻璃材料为基底的高密度先进封装载板。相比传统有机基板（ABF），玻璃基板具有超低介电常数（Dk≈4.1）、极低损耗因子（Df≈0.002）、与硅芯片匹配的热膨胀系数，以及可支持微米级互连间距的平坦表面。这些特性使其成为突破AI芯片高密度互连、低功耗传输瓶颈的关键材料，被Intel、台积电、三星三大巨头列为下一代封装核心方向。
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>🔬 硼硅酸盐玻璃</h3>
+        <p>最成熟的玻璃基板材料体系，Dk≈4.6，热稳定性优异，成本低廉。Intel早期原型采用此类材料，已具备一定工艺基础。</p>
+        <span class="tag">低成本</span><span class="tag">成熟度高</span>
+      </div>
+      <div class="card">
+        <h3>🧪 铝硅酸盐玻璃</h3>
+        <p>机械强度更高，耐热冲击性优异，Dk≈5.1。适合大尺寸基板应用，康宁、肖特等厂商重点布局。</p>
+        <span class="tag">高强度</span><span class="tag">大尺寸</span>
+      </div>
+      <div class="card">
+        <h3>💎 无碱铝硼硅玻璃</h3>
+        <p>电气性能最优，Dk≈4.1，Df≈0.002，无碱金属离子污染。显示面板级玻璃原片技术可复用，是未来量产首选。</p>
+        <span class="tag">低损耗</span><span class="tag">面板级</span>
+      </div>
+    </div>
+
+    <div class="process-steps">
+      <div class="step"><span class="step-num">Step 1</span>TGV成孔</div>
+      <span class="arrow">→</span>
+      <div class="step"><span class="step-num">Step 2</span>金属化</div>
+      <span class="arrow">→</span>
+      <div class="step"><span class="step-num">Step 3</span>RDL布线</div>
+      <span class="arrow">→</span>
+      <div class="step"><span class="step-num">Step 4</span>芯片贴装</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. 对比表 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📊</span>三大基板材料对比</h2>
+    <p class="section-desc">玻璃基板 vs 有机基板(ABF) vs 硅中介层</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>玻璃基板</th>
+            <th>有机基板 (ABF)</th>
+            <th>硅中介层</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dk (介电常数)</td>
+            <td class="highlight-cell">4.1 - 5.1</td>
+            <td>~5.2</td>
+            <td>11.9</td>
+          </tr>
+          <tr>
+            <td>Df (损耗因子)</td>
+            <td class="highlight-cell">0.002 - 0.005</td>
+            <td>0.01 - 0.02</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>CTE (ppm/°C)</td>
+            <td class="highlight-cell">3 - 5 (匹配硅)</td>
+            <td>15 - 17</td>
+            <td>2.6</td>
+          </tr>
+          <tr>
+            <td>互连密度</td>
+            <td class="highlight-cell">~1μm 间距</td>
+            <td>~10μm 间距</td>
+            <td>~0.4μm 间距</td>
+          </tr>
+          <tr>
+            <td>尺寸上限</td>
+            <td class="highlight-cell">515×510mm (面板级)</td>
+            <td>~100×100mm</td>
+            <td>~858mm² (reticle limit)</td>
+          </tr>
+          <tr>
+            <td>热导率 (W/m·K)</td>
+            <td>~1.1</td>
+            <td>~0.3</td>
+            <td class="highlight-cell">~148</td>
+          </tr>
+          <tr>
+            <td>成本</td>
+            <td class="highlight-cell">中（量产降本空间大）</td>
+            <td>低</td>
+            <td>高</td>
+          </tr>
+          <tr>
+            <td>量产成熟度</td>
+            <td>研发/早期</td>
+            <td class="highlight-cell">成熟</td>
+            <td>成熟</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 技术路线 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🏭</span>三大技术路线</h2>
+    <p class="section-desc">Intel、台积电、三星三足鼎立</p>
+
+    <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="route-card">
+        <div class="company">Intel</div>
+        <h3>EMIB + 玻璃芯</h3>
+        <p>在EMIB嵌入式多芯片互连桥接基础上，将硅桥替换为玻璃芯，实现更大尺寸、更高密度互连。</p>
+        <div class="params">
+          <span class="param">2.5D封装</span>
+          <span class="param">大尺寸面板</span>
+          <span class="param">硼硅酸盐</span>
+        </div>
+        <div class="timeline">📅 量产时间：2026-2027年</div>
+      </div>
+      <div class="route-card">
+        <div class="company">TSMC 台积电</div>
+        <h3>CoPoS (Chip on Panel Substrate)</h3>
+        <p>面板级封装方案，将芯片直接贴装在玻璃面板基板上，结合CoW/SoIC实现3D堆叠。</p>
+        <div class="params">
+          <span class="param">面板级</span>
+          <span class="param">3D堆叠</span>
+          <span class="param">SoIC集成</span>
+        </div>
+        <div class="timeline">📅 量产时间：2027-2028年</div>
+      </div>
+      <div class="route-card">
+        <div class="company">Samsung 三星</div>
+        <h3>LMCE (Glass Substrate)</h3>
+        <p>三星电机主导的玻璃基板方案，面向下一代HBM和AI加速器，强调原片自制和全流程整合。</p>
+        <div class="params">
+          <span class="param">HBM封装</span>
+          <span class="param">垂直整合</span>
+          <span class="param">自研玻璃</span>
+        </div>
+        <div class="timeline">📅 量产时间：2028年后</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 时间线 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">📅</span>商业化进度时间线</h2>
+    <p class="section-desc">从路线图到规模量产的关键里程碑</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">23</div>
+        <div class="timeline-year">2023</div>
+        <div class="timeline-event">Intel发布玻璃基板路线图，行业关注度爆发</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">26</div>
+        <div class="timeline-year">2026</div>
+        <div class="timeline-event">Intel Xeon 6+ 商用出货，Absolics小批量生产</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">27</div>
+        <div class="timeline-year">2027</div>
+        <div class="timeline-event">台积电CoPoS进入试产，三星样品交付</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">28</div>
+        <div class="timeline-year">2028</div>
+        <div class="timeline-event">多厂商量产爬坡，CPO/CoPoS规模化应用</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">30</div>
+        <div class="timeline-year">2030</div>
+        <div class="timeline-event">规模量产，成本下降，国产替代加速</div>
+      </div>
+    </div>
+
+    <div class="timeline-outlook">
+      <div class="outlook-tag"><strong>乐观派</strong>：2026-2027 量产</div>
+      <div class="outlook-tag"><strong>中性派</strong>：2027-2028 量产</div>
+      <div class="outlook-tag"><strong>保守派</strong>：2030 后规模化</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 量产瓶颈 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">⚠️</span>量产瓶颈</h2>
+    <p class="section-desc">制约玻璃基板规模化的五大关键挑战</p>
+
+    <div class="bottleneck-grid">
+      <div class="bottleneck-card">
+        <div class="b-icon">⚡</div>
+        <h4>TGV电镀填铜</h4>
+        <div class="severity">★★★★★</div>
+        <p class="desc">微孔内气泡残留、填充空洞率高，良率爬坡的核心瓶颈</p>
+      </div>
+      <div class="bottleneck-card">
+        <div class="b-icon">🧊</div>
+        <h4>玻璃原片供应</h4>
+        <div class="severity">★★★★☆</div>
+        <p class="desc">高规格面板级玻璃原片产能集中在少数厂商，国内尚无成熟供应</p>
+      </div>
+      <div class="bottleneck-card">
+        <div class="b-icon">🔍</div>
+        <h4>检测盲区</h4>
+        <div class="severity">★★★★☆</div>
+        <p class="desc">透明基板导致光学检测失效，TGV孔内缺陷检出率不足</p>
+      </div>
+      <div class="bottleneck-card">
+        <div class="b-icon">📐</div>
+        <h4>标准缺失</h4>
+        <div class="severity">★★★☆☆</div>
+        <p class="desc">行业缺乏统一设计规则、测试标准和可靠性认证体系</p>
+      </div>
+      <div class="bottleneck-card">
+        <div class="b-icon">💔</div>
+        <h4>裂片矛盾</h4>
+        <div class="severity">★★★★☆</div>
+        <p class="desc">玻璃脆性与精密切割需求矛盾，切割良率和效率难以兼顾</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. AI产业影响 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🤖</span>对AI产业的影响</h2>
+    <p class="section-desc">五大应用场景重塑AI硬件架构</p>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="i-icon">🧠</div>
+        <h4>AI芯片封装</h4>
+        <div class="data">10× 密度</div>
+        <p>互连密度提升10倍，突破ABF基板带宽瓶颈，支撑万亿参数模型</p>
+      </div>
+      <div class="impact-card">
+        <div class="i-icon">💻</div>
+        <h4>CPU封装</h4>
+        <div class="data">50% 功耗降</div>
+        <p>低Dk/Df材料降低信号损耗，CPU互连功耗下降50%</p>
+      </div>
+      <div class="impact-card">
+        <div class="i-icon">🌐</div>
+        <h4>CPO 共封装光学</h4>
+        <div class="data">70% 功耗降</div>
+        <p>玻璃基板与光引擎共封装，数据中心互联功耗降低70%</p>
+      </div>
+      <div class="impact-card">
+        <div class="i-icon">📦</div>
+        <h4>CoPoS 面板级封装</h4>
+        <div class="data">515mm 面板</div>
+        <p>大面积封装提升芯片产出率，单位成本显著下降</p>
+      </div>
+      <div class="impact-card">
+        <div class="i-icon">💡</div>
+        <h4>Mini/MicroLED</h4>
+        <div class="data">透明基板</div>
+        <p>透明玻璃基板作为LED驱动载板，实现超高分辨率显示集成</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 产业链全景 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🔗</span>产业链全景图</h2>
+    <p class="section-desc">上游材料 → 中游制造 → 下游应用</p>
+
+    <div class="chain-container">
+      <div class="chain-block">
+        <h4>⛏️ 上游：材料与设备</h4>
+        <ul>
+          <li>康宁 — 玻璃原片</li>
+          <li>肖特(SCHOTT) — 特种玻璃</li>
+          <li>电硝子(AGC) — 面板级玻璃</li>
+          <li>东丽 — 光敏材料</li>
+          <li>Disco — 激光切割设备</li>
+          <li>应用材料(AMAT) — 电镀设备</li>
+          <li>安集科技 — CMP抛光液</li>
+        </ul>
+      </div>
+      <div class="chain-block">
+        <h4>🏭 中游：基板制造</h4>
+        <ul>
+          <li>Intel — 玻璃基板自研</li>
+          <li>Absolics — 玻璃基板专业制造商</li>
+          <li>三星电机 — 玻璃基板</li>
+          <li>台积电 — CoPoS封装</li>
+          <li>沃格光电 — TGV玻璃基板</li>
+          <li>东威科技 — TGV电镀设备</li>
+        </ul>
+      </div>
+      <div class="chain-block">
+        <h4>📦 下游：封装与应用</h4>
+        <ul>
+          <li>NVIDIA — AI GPU封装</li>
+          <li>AMD — AI加速器封装</li>
+          <li>Intel — Xeon CPU封装</li>
+          <li>SK海力士 — HBM封装</li>
+          <li>博通 — 网络芯片封装</li>
+          <li>谷歌/微软 — 数据中心CPO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 推荐标的 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">💰</span>推荐标的</h2>
+    <p class="section-desc">中国Top5 & 全球Top5</p>
+
+    <div class="stock-section" style="margin-bottom: 32px;">
+      <h3>🇨🇳 中国 Top 5</h3>
+      <div class="table-wrap">
+        <table class="stock-table cn">
+          <thead>
+            <tr>
+              <th>公司</th>
+              <th>代码</th>
+              <th>环节</th>
+              <th>核心逻辑</th>
+              <th>进展阶段</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>沃格光电</td>
+              <td>603773.SH</td>
+              <td>玻璃基板制造</td>
+              <td>国内TGV玻璃基板先行者，已具备小批量交付能力</td>
+              <td>小批量</td>
+            </tr>
+            <tr>
+              <td>东威科技</td>
+              <td>688700.SH</td>
+              <td>TGV电镀设备</td>
+              <td>玻璃基板TGV电镀填铜设备国内唯一量产供应商</td>
+              <td>已出货</td>
+            </tr>
+            <tr>
+              <td>安集科技</td>
+              <td>688019.SH</td>
+              <td>CMP抛光液</td>
+              <td>玻璃基板CMP抛光液国产替代龙头，已进入客户验证</td>
+              <td>验证阶段</td>
+            </tr>
+            <tr>
+              <td>大族激光</td>
+              <td>002008.SZ</td>
+              <td>激光加工设备</td>
+              <td>TGV激光钻孔设备布局，玻璃切割方案供应商</td>
+              <td>研发中</td>
+            </tr>
+            <tr>
+              <td>兴森科技</td>
+              <td>002436.SZ</td>
+              <td>IC载板</td>
+              <td>布局玻璃基板载板业务，对标ABF载板升级方向</td>
+              <td>早期研发</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="stock-section">
+      <h3>🌍 全球 Top 5</h3>
+      <div class="table-wrap">
+        <table class="stock-table global">
+          <thead>
+            <tr>
+              <th>公司</th>
+              <th>代码</th>
+              <th>环节</th>
+              <th>核心逻辑</th>
+              <th>进展阶段</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Intel</td>
+              <td>INTC</td>
+              <td>基板自研+封装</td>
+              <td>玻璃基板路线图定义者，2026年Xeon 6+率先商用</td>
+              <td>即将商用</td>
+            </tr>
+            <tr>
+              <td>Absolics</td>
+              <td>—</td>
+              <td>玻璃基板制造</td>
+              <td>Intel投资的专业玻璃基板制造商，已建量产线</td>
+              <td>小批量</td>
+            </tr>
+            <tr>
+              <td>Corning 康宁</td>
+              <td>GLW</td>
+              <td>玻璃原片</td>
+              <td>全球面板级玻璃原片龙头，材料端核心受益者</td>
+              <td>已供货</td>
+            </tr>
+            <tr>
+              <td>Applied Materials</td>
+              <td>AMAT</td>
+              <td>封装设备</td>
+              <td>TGV电镀、PVD等关键制程设备全球龙头</td>
+              <td>已出货</td>
+            </tr>
+            <tr>
+              <td>DISCO</td>
+              <td>6146.T</td>
+              <td>切割设备</td>
+              <td>玻璃基板精密切割/研磨设备垄断者</td>
+              <td>已出货</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 风险矩阵 -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🎯</span>投资风险矩阵</h2>
+    <p class="section-desc">四维风险全景评估</p>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <h4>🔧 技术风险</h4>
+        <div class="risk-item">
+          <span>TGV填铜良率不达标</span>
+          <span class="risk-level risk-high">高</span>
+        </div>
+        <div class="risk-item">
+          <span>大尺寸面板翘曲控制</span>
+          <span class="risk-level risk-high">高</span>
+        </div>
+        <div class="risk-item">
+          <span>检测技术标准未统一</span>
+          <span class="risk-level risk-medium">中</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <h4>📈 市场风险</h4>
+        <div class="risk-item">
+          <span>量产时间表延后</span>
+          <span class="risk-level risk-high">高</span>
+        </div>
+        <div class="risk-item">
+          <span>ABF基板持续改进替代</span>
+          <span class="risk-level risk-medium">中</span>
+        </div>
+        <div class="risk-item">
+          <span>下游AI需求波动</span>
+          <span class="risk-level risk-low">低</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <h4>🏛️ 政策风险</h4>
+        <div class="risk-item">
+          <span>出口管制限制设备获取</span>
+          <span class="risk-level risk-high">高</span>
+        </div>
+        <div class="risk-item">
+          <span>国产替代政策不确定性</span>
+          <span class="risk-level risk-medium">中</span>
+        </div>
+      </div>
+      <div class="risk-card">
+        <h4>💰 估值风险</h4>
+        <div class="risk-item">
+          <span>概念炒作透支预期</span>
+          <span class="risk-level risk-high">高</span>
+        </div>
+        <div class="risk-item">
+          <span>标的稀缺导致溢价过高</span>
+          <span class="risk-level risk-medium">中</span>
+        </div>
+        <div class="risk-item">
+          <span>业绩兑现周期长</span>
+          <span class="risk-level risk-medium">中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 核心判断 -->
+<section class="conclusion">
+  <div class="container">
+    <h2 class="section-title"><span class="icon">🎯</span>核心判断</h2>
+    <p class="section-desc">确定性、不确定性与投资判断</p>
+
+    <div class="conclusion-cards">
+      <div class="conclusion-card">
+        <div class="c-label certain">✅ 确定的</div>
+        <p>玻璃基板是AI封装长期方向。低Dk/Df、大尺寸、高密度互连三大优势不可替代，Intel/台积电/三星三巨头全力推进，产业链投入已不可逆。</p>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-label uncertain">❓ 不确定的</div>
+        <p>量产时间表存在1-3年分歧。TGV填铜良率爬坡速度、国产玻璃原片供应能力、检测标准建立进度均存在不确定性，投资节奏需动态跟踪。</p>
+      </div>
+      <div class="conclusion-card">
+        <div class="c-label judge">🔮 核心判断</div>
+        <p>2026-2028年为工程攻坚期，技术验证与小批量交付并行。2030年前后进入规模化量产阶段，成本下降驱动渗透率快速提升。</p>
+      </div>
+    </div>
+
+    <div class="judgment-banner">
+      💡 投资策略：短期关注设备与材料端（确定性高），中期关注基板制造端（弹性大），长期关注国产替代全景链
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>📅 研究日期：2026年6月27日</p>
+  <p>📊 数据来源：Intel/台积电/三星官方技术文档、行业研报、产业链调研</p>
+  <p>⚠️ 本报告仅供研究参考，不构成投资建议</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.card, .route-card, .bottleneck-card, .impact-card, .risk-card, .conclusion-card, .chain-block, .hero-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Smooth scroll already via CSS
+</script>
+
+</body>
+</html>
