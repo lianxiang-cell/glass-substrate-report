@@ -631,6 +631,109 @@ footer p { margin: 4px 0; }
   .cards-grid { grid-template-columns: 1fr; }
   .process-steps { flex-direction: column; }
   .arrow { transform: rotate(90deg); }
+  .pick-card-grid { grid-template-columns: 1fr !important; }
+}
+
+/* === 推荐标的卡片 === */
+.pick-section { margin-bottom: 48px; }
+.pick-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 32px 0 8px;
+  padding-left: 14px;
+  border-left: 4px solid var(--blue-400);
+}
+.pick-group-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 28px 0 16px;
+  color: var(--blue-300);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pick-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 12px;
+}
+.pick-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 20px 22px;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.pick-card.cn { border-left: 4px solid #ef4444; }
+.pick-card.global { border-left: 4px solid #3b82f6; }
+.pick-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.pick-card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.pick-card-code {
+  font-size: 0.85rem;
+  color: var(--blue-300);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+.pick-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: rgba(148,163,184,0.2);
+  color: var(--blue-100);
+  margin-bottom: 10px;
+}
+.pick-stage {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.pick-stage.green { background: rgba(34,197,94,0.25); color: #86efac; }
+.pick-stage.yellow { background: rgba(234,179,8,0.25); color: #fde047; }
+.pick-stage.orange { background: rgba(249,115,22,0.25); color: #fdba74; }
+.pick-card-row {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.pick-card-row strong {
+  color: var(--blue-100);
+  font-weight: 600;
+}
+.pick-reason {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(96,165,250,0.15);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.92);
+}
+.pick-reason::before {
+  content: "💡 推荐理由：";
+  font-weight: 700;
+  color: var(--blue-300);
 }
 </style>
 </head>
@@ -981,116 +1084,455 @@ footer p { margin: 4px 0; }
 </section>
 
 <!-- 8. 推荐标的 -->
-<section>
+<section class="pick-section">
   <div class="container">
     <h2 class="section-title"><span class="icon">💰</span>推荐标的</h2>
-    <p class="section-desc">中国Top5 & 全球Top5</p>
+    <p class="section-desc">按上中下游分段 · 中国Top5 & 全球Top5 · 含推荐理由</p>
 
-    <div class="stock-section" style="margin-bottom: 32px;">
-      <h3>🇨🇳 中国 Top 5</h3>
-      <div class="table-wrap">
-        <table class="stock-table cn">
-          <thead>
-            <tr>
-              <th>公司</th>
-              <th>代码</th>
-              <th>环节</th>
-              <th>核心逻辑</th>
-              <th>进展阶段</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>沃格光电</td>
-              <td>603773.SH</td>
-              <td>玻璃基板制造</td>
-              <td>国内TGV玻璃基板先行者，已具备小批量交付能力</td>
-              <td>小批量</td>
-            </tr>
-            <tr>
-              <td>东威科技</td>
-              <td>688700.SH</td>
-              <td>TGV电镀设备</td>
-              <td>玻璃基板TGV电镀填铜设备国内唯一量产供应商</td>
-              <td>已出货</td>
-            </tr>
-            <tr>
-              <td>安集科技</td>
-              <td>688019.SH</td>
-              <td>CMP抛光液</td>
-              <td>玻璃基板CMP抛光液国产替代龙头，已进入客户验证</td>
-              <td>验证阶段</td>
-            </tr>
-            <tr>
-              <td>大族激光</td>
-              <td>002008.SZ</td>
-              <td>激光加工设备</td>
-              <td>TGV激光钻孔设备布局，玻璃切割方案供应商</td>
-              <td>研发中</td>
-            </tr>
-            <tr>
-              <td>兴森科技</td>
-              <td>002436.SZ</td>
-              <td>IC载板</td>
-              <td>布局玻璃基板载板业务，对标ABF载板升级方向</td>
-              <td>早期研发</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- ========== 上游 ========== -->
+    <div class="pick-section-title">⛏️ 上游：材料与设备</div>
+
+    <div class="pick-group-title">🇨🇳 中国 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- 帝尔激光 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">帝尔激光</span>
+          <span class="pick-card-code">300776.SZ</span>
+        </div>
+        <span class="pick-tag">TGV激光设备</span>
+        <span class="pick-stage green">✅ 已出货</span>
+        <div class="pick-card-row"><strong>主营：</strong>太阳能电池激光加工设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV激光微孔设备（激光诱导改质+化学蚀刻），最大深径比100:1，最小孔径≤5μm，板级支持650×650mm</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约400亿元；2025年营收约50亿元+</div>
+        <div class="pick-reason">TGV激光设备国产化龙头，已实现面板级设备出货，晶圆级+面板级全覆盖。处于业绩兑现期，技术参数接近国际先进水平，国产替代确定性高。</div>
+      </div>
+
+      <!-- 大族激光 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">大族激光</span>
+          <span class="pick-card-code">002008.SZ</span>
+        </div>
+        <span class="pick-tag">TGV激光钻孔设备</span>
+        <span class="pick-stage green">✅ 已交付</span>
+        <div class="pick-card-row"><strong>主营：</strong>工业激光加工设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>FLEE-TGV飞秒激光强化玻璃蚀刻通孔设备，每秒打孔>5000个，深径比>50:1，定位精度±5μm</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约800亿元；2025年中报净利润4.88亿元</div>
+        <div class="pick-reason">TGV激光钻孔设备国产化交付，12寸Wafer级设备参数成熟。受益于TGV激光钻孔国产化率80%+的确定性替代逻辑，已进入出货兑现期。</div>
+      </div>
+
+      <!-- 天承科技 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">天承科技</span>
+          <span class="pick-card-code">688603.SH</span>
+        </div>
+        <span class="pick-tag">TGV填孔镀铜添加剂</span>
+        <span class="pick-stage green">✅ 已批量出货</span>
+        <div class="pick-card-row"><strong>主营：</strong>PCB功能性湿电子化学品</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV填孔镀铜添加剂，适用于脉冲/直流电镀，填孔性能优异、低镀层应力、高延展性</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约80亿元；2025年营收约8亿元</div>
+        <div class="pick-reason">电镀化学品赛道独特，"耗材"属性带来持续收入而非一次性设备销售。通过英伟达PCB认证提供质量背书，市值较小弹性大，是国内少数已在TGV环节实现收入的公司。</div>
+      </div>
+
+      <!-- 盛美上海 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">盛美上海</span>
+          <span class="pick-card-code">688082.SH</span>
+        </div>
+        <span class="pick-tag">TGV电镀设备</span>
+        <span class="pick-stage orange">🔬 研发/导入中</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体清洗/电镀设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV电镀设备，可电镀铜/镍/锡/银/金，2μm超细RDL线电镀</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1700亿元；2026Q1营收14.76亿元，2026年预计营收85亿元</div>
+        <div class="pick-reason">半导体设备平台型公司，TGV电镀是增量业务，核心估值仍由清洗设备主业支撑。TGV提供向上期权，在研新型化合物半导体电镀设备可用于TGV金属电镀。</div>
+      </div>
+
+      <!-- 东威科技 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">东威科技</span>
+          <span class="pick-card-code">688700.SH</span>
+        </div>
+        <span class="pick-tag">玻璃基板电镀设备</span>
+        <span class="pick-stage yellow">✅ 已接单</span>
+        <div class="pick-card-row"><strong>主营：</strong>PCB电镀设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>玻璃基板双边电镀设备，水平式传送利于高纵横比通孔排气，专利夹具降碎片率</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约200亿元；2025年营收约11亿元</div>
+        <div class="pick-reason">已接到玻璃基板电镀设备订单，验证了需求真实性。TGV业务能否成为第二增长曲线需持续跟踪，但订单确认意味着技术方案已获客户认可。</div>
       </div>
     </div>
 
-    <div class="stock-section">
-      <h3>🌍 全球 Top 5</h3>
-      <div class="table-wrap">
-        <table class="stock-table global">
-          <thead>
-            <tr>
-              <th>公司</th>
-              <th>代码</th>
-              <th>环节</th>
-              <th>核心逻辑</th>
-              <th>进展阶段</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Intel</td>
-              <td>INTC</td>
-              <td>基板自研+封装</td>
-              <td>玻璃基板路线图定义者，2026年Xeon 6+率先商用</td>
-              <td>即将商用</td>
-            </tr>
-            <tr>
-              <td>Absolics</td>
-              <td>—</td>
-              <td>玻璃基板制造</td>
-              <td>Intel投资的专业玻璃基板制造商，已建量产线</td>
-              <td>小批量</td>
-            </tr>
-            <tr>
-              <td>Corning 康宁</td>
-              <td>GLW</td>
-              <td>玻璃原片</td>
-              <td>全球面板级玻璃原片龙头，材料端核心受益者</td>
-              <td>已供货</td>
-            </tr>
-            <tr>
-              <td>Applied Materials</td>
-              <td>AMAT</td>
-              <td>封装设备</td>
-              <td>TGV电镀、PVD等关键制程设备全球龙头</td>
-              <td>已出货</td>
-            </tr>
-            <tr>
-              <td>DISCO</td>
-              <td>6146.T</td>
-              <td>切割设备</td>
-              <td>玻璃基板精密切割/研磨设备垄断者</td>
-              <td>已出货</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="pick-group-title">🌍 全球 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- 康宁 -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">康宁 Corning</span>
+          <span class="pick-card-code">NYSE: GLW</span>
+        </div>
+        <span class="pick-tag">玻璃原片</span>
+        <span class="pick-stage green">✅ 量产供应</span>
+        <div class="pick-card-row"><strong>主营：</strong>特种玻璃、光纤、显示玻璃</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>半导体封装用玻璃晶圆/基材，与Intel合作推进玻璃基板量产，EXTREME ULE® Glass用于下一代芯片制造</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1960亿美元；2025年营收156亿美元</div>
+        <div class="pick-reason">全球玻璃原片垄断者（CR3>90%），是产业链最确定的受益方——无论哪家下游厂商率先量产，都需要康宁的原片。与Intel/AMD/京东方深度绑定，大市值提供安全边际，玻璃基板业务是增量期权。</div>
+      </div>
+
+      <!-- 应用材料 -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">应用材料 Applied Materials</span>
+          <span class="pick-card-code">NASDAQ: AMAT</span>
+        </div>
+        <span class="pick-tag">先进封装设备</span>
+        <span class="pick-stage yellow">🔬 生态布局</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体制造设备（刻蚀、沉积、CMP等）</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>先进封装基板设备方案，涵盖PVD/CVD沉积、CMP抛光、刻蚀等；与Absolics合作</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1800亿美元；FY2025营收约270亿美元</div>
+        <div class="pick-reason">半导体设备巨头，玻璃基板设备是先进封装布局的组成部分。非核心驱动但提供行业beta暴露，推进大尺寸半导体级先进基板生态建设。</div>
+      </div>
+
+      <!-- 泛林半导体 -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">泛林半导体 Lam Research</span>
+          <span class="pick-card-code">NASDAQ: LRCX</span>
+        </div>
+        <span class="pick-tag">TGV刻蚀/电镀设备</span>
+        <span class="pick-stage green">✅ 供应中</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体刻蚀/沉积/电镀设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV刻蚀和电镀系统供应，先进封装全流程方案</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1200亿美元；FY2025营收约160亿美元</div>
+        <div class="pick-reason">为玻璃基板制造提供刻蚀和电镀设备，已处于供应中状态。作为半导体设备龙头，将直接受益于玻璃基板量产带来的设备需求增长。</div>
+      </div>
+
+      <!-- LPKF -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">LPKF Laser & Electronics</span>
+          <span class="pick-card-code">ETR: LPK</span>
+        </div>
+        <span class="pick-tag">LIDE® TGV设备</span>
+        <span class="pick-stage green">✅ 全球领先</span>
+        <div class="pick-card-row"><strong>主营：</strong>激光精密加工设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>LIDE®技术（激光诱导深蚀刻），TGV设备全球领导者，数十台设备装机运行，自有制造工厂量产玻璃基板</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约5亿欧元；2025年营收约1.15亿欧元</div>
+        <div class="pick-reason">纯度最高的玻璃基板设备标的，LIDE®技术的专利壁垒和数十台装机量构成竞争优势。与Onto Innovation合作加速量产，预计2027年开始规模量产。</div>
+      </div>
+
+      <!-- KLA -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">KLA Corporation</span>
+          <span class="pick-card-code">NASDAQ: KLAC</span>
+        </div>
+        <span class="pick-tag">玻璃基板检测设备</span>
+        <span class="pick-stage orange">🔬 布局中</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体检测/量测设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>玻璃基板缺陷检测、量测方案</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1000亿美元；FY2025营收约120亿美元</div>
+        <div class="pick-reason">在检测领域的垄断地位使其成为玻璃基板量产的必要受益者——量产前提是检测能力达标。检测设备覆盖先进封装基板检测需求，将随产业量产同步放量。</div>
+      </div>
+    </div>
+
+    <!-- ========== 中游 ========== -->
+    <div class="pick-section-title">🏭 中游：基板制造与加工</div>
+
+    <div class="pick-group-title">🇨🇳 中国 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- 京东方A -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">京东方A</span>
+          <span class="pick-card-code">000725.SZ</span>
+        </div>
+        <span class="pick-tag">面板级玻璃基板制造</span>
+        <span class="pick-stage yellow">🔬 试验线通线中</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体显示、传感、先进封装</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>面板级玻璃基封装载板（510×515mm），TGV开孔、深孔填铜、增层布线全流程工艺拉通，已向客户送样</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约2000亿元；2025年营收2045.9亿元，归母净利润58.57亿元</div>
+        <div class="pick-reason">国内面板级玻璃基板进展最快，已完成全流程工艺拉通。试验线2026H1通线，计划2026年底启动50亿元新产线建设，目标2028年国内第一梯队。与康宁签署合作备忘录，产业链协同优势显著。</div>
+      </div>
+
+      <!-- 沃格光电 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">沃格光电</span>
+          <span class="pick-card-code">603773.SH</span>
+        </div>
+        <span class="pick-tag">TGV加工/多层线路板</span>
+        <span class="pick-stage yellow">🔬 良率爬坡中</span>
+        <div class="pick-card-row"><strong>主营：</strong>光电玻璃精加工、显示器件</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>全球首条玻璃基TGV多层线路板生产线，年产10万㎡TGV产线小批量供货；MicroLED玻璃基直显模组</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约111亿元；2024年营收22.21亿元（同比+22.45%）</div>
+        <div class="pick-reason">全球首条TGV多层线路板生产线先行者，TGV深宽比100:1、最小孔径5μm技术领先。1.6T光模块玻璃基载板已批量送样，成都8.6代线预计2026年量产，月产能2.4万片。</div>
+      </div>
+
+      <!-- 蓝思科技 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">蓝思科技</span>
+          <span class="pick-card-code">300433.SZ</span>
+        </div>
+        <span class="pick-tag">TGV基板/HDD玻璃基板</span>
+        <span class="pick-stage yellow">🔬 中试建设</span>
+        <div class="pick-card-row"><strong>主营：</strong>精密制造（玻璃盖板、蓝宝石、陶瓷）</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>三大方向：HDD存储玻璃基板（小批量交付）、TGV玻璃通孔基板（中试建设）、半导体玻璃晶圆（已量产）；独创激光诱导打孔技术</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约3000亿元+；2025年营收744.1亿元</div>
+        <div class="pick-reason">三大方向齐发，HDD玻璃基板已小批量交付、半导体玻璃晶圆已量产，TGV中试线建设中。3万㎡厂房年底投用，独创激光诱导打孔技术构成工艺壁垒，大盘股中的玻璃基板弹性标的。</div>
+      </div>
+
+      <!-- 彩虹股份 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">彩虹股份</span>
+          <span class="pick-card-code">600707.SH</span>
+        </div>
+        <span class="pick-tag">显示基板玻璃→半导体玻璃</span>
+        <span class="pick-stage orange">🔬 研发/中试</span>
+        <div class="pick-card-row"><strong>主营：</strong>TFT-LCD基板玻璃（G6/G7.5/G8.5+）</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>显示基板玻璃向半导体封装玻璃延伸；2026年启动半导体玻璃中试线建设</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约200-300亿元；主营显示基板玻璃</div>
+        <div class="pick-reason">显示玻璃基板原片制造经验可迁移至半导体封装玻璃。芯片级半导体基板玻璃计划2026年内量产，封装级尚处研发阶段，是国产原片突破的关键跟踪标的。</div>
+      </div>
+
+      <!-- 美迪凯 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">美迪凯</span>
+          <span class="pick-card-code">688079.SH</span>
+        </div>
+        <span class="pick-tag">玻璃晶圆代加工</span>
+        <span class="pick-stage green">✅ 批量出货</span>
+        <div class="pick-card-row"><strong>主营：</strong>光学精密加工、半导体部品</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>与日本玻璃厂商合作开展玻璃基板代加工；12寸玻璃晶圆已批量出货（切入三星供应链）；半导体用玻璃基板已供货</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约50-80亿元；2025年玻璃基板收入占总营收约2%</div>
+        <div class="pick-reason">12寸玻璃晶圆已批量出货并切入三星供应链，玻璃基板生产线已通过头部fab厂验厂。芯片级产品已有收入确认，是少数已实现玻璃基板收入的A股标的，受益于芯片级市场先行放量。</div>
+      </div>
+    </div>
+
+    <div class="pick-group-title">🌍 全球 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- 康宁（中游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">康宁 Corning</span>
+          <span class="pick-card-code">NYSE: GLW</span>
+        </div>
+        <span class="pick-tag">先进封装玻璃载板</span>
+        <span class="pick-stage green">✅ 量产供应</span>
+        <div class="pick-card-row"><strong>主营：</strong>显示玻璃、光通信、特种玻璃</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>EXTREME ULE® Glass用于下一代芯片制造；先进封装玻璃载板；与京东方、英伟达达成合作</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1771亿美元；营收约163亿美元</div>
+        <div class="pick-reason">玻璃基板材料领域全球龙头，已推出半导体级玻璃晶圆产品。与京东方、英伟达合作深度绑定下游应用，是中游材料端不可绕过的核心供应商。</div>
+      </div>
+
+      <!-- 应用材料（中游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">应用材料 Applied Materials</span>
+          <span class="pick-card-code">NASDAQ: AMAT</span>
+        </div>
+        <span class="pick-tag">玻璃基板光刻设备</span>
+        <span class="pick-stage orange">🔬 设备研发</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体设备龙头</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>开发玻璃基板先进光刻设备；与Absolics合作；CHIPS Act资助硅芯基板技术</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1500亿美元+；营收约260亿美元</div>
+        <div class="pick-reason">为玻璃基板量产提供设备方案，设备研发阶段意味着技术壁垒正在突破。CHIPS Act资助加速技术路线，与Absolics合作形成设备+制造生态闭环。</div>
+      </div>
+
+      <!-- Intel（中游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">Intel 英特尔</span>
+          <span class="pick-card-code">NASDAQ: INTC</span>
+        </div>
+        <span class="pick-tag">玻璃基板路线图推动者</span>
+        <span class="pick-stage yellow">🔬 样品验证</span>
+        <div class="pick-card-row"><strong>主营：</strong>CPU/GPU/晶圆制造</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>玻璃基板先进封装路线图核心推动者；600+玻璃基板专利；2026年1月展示首个样品</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1000亿美元+</div>
+        <div class="pick-reason">从自研转向外部采购+专利授权，600+专利积累深厚。2026年1月已展示EMIB+玻璃芯基板样品，2026-2030年大规模应用，是玻璃基板产业路线图的定义者。</div>
+      </div>
+
+      <!-- SKC -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">SKC（母公司Absolics）</span>
+          <span class="pick-card-code">KRX: 011790</span>
+        </div>
+        <span class="pick-tag">面板级玻璃基板制造</span>
+        <span class="pick-stage yellow">🔬 原型生产</span>
+        <div class="pick-card-row"><strong>主营：</strong>化工/半导体材料</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>Absolics为全球首家玻璃基板商业化企业；美国Covington工厂年产能12,000㎡；AMD认证临近</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>SKC市值约3-5万亿韩元</div>
+        <div class="pick-reason">全球首个玻璃基板专用工厂已建成，获4000万美元CHIPS Act资助。AMD客户认证临近，计划扩至72,000㎡/年，是全球中游制造端的领跑者。</div>
+      </div>
+
+      <!-- LPKF（中游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">LPKF Laser & Electronics</span>
+          <span class="pick-card-code">XETRA: LPK</span>
+        </div>
+        <span class="pick-tag">LIDE® TGV工艺</span>
+        <span class="pick-stage yellow">🔬 2027量产</span>
+        <div class="pick-card-row"><strong>主营：</strong>激光精密加工设备</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>LIDE（激光诱导深刻蚀）技术为TGV核心工艺；与Onto Innovation合作加速量产；自有制造工厂</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约5-8亿欧元；2024年营收约2.44亿美元</div>
+        <div class="pick-reason">LIDE技术是TGV核心工艺之一，与Onto Innovation合作加速量产进程。YTD涨幅+255%反映市场预期，预计2027年开始量产将带来收入拐点。</div>
+      </div>
+    </div>
+
+    <!-- ========== 下游 ========== -->
+    <div class="pick-section-title">📦 下游：封装与应用</div>
+
+    <div class="pick-group-title">🇨🇳 中国 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- 京东方A（下游） -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">京东方A</span>
+          <span class="pick-card-code">000725.SZ</span>
+        </div>
+        <span class="pick-tag">封装应用+光互连</span>
+        <span class="pick-stage yellow">🔬 合作签约+产线规划</span>
+        <div class="pick-card-row"><strong>主营：</strong>显示面板</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>与康宁签署合作备忘录，围绕玻璃基封装载板、光互连应用合作；计划2026年底研判后启动50亿元新产线，目标2028年国内第一梯队</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约2217亿元</div>
+        <div class="pick-reason">与康宁战略合作形成"材料+制造+应用"闭环，50亿元新产线规划显示战略决心。作为国内面板龙头，资金实力和产线经验使其在玻璃基板下游应用端具备先发优势。</div>
+      </div>
+
+      <!-- 彩虹股份（下游） -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">彩虹股份</span>
+          <span class="pick-card-code">600707.SH</span>
+        </div>
+        <span class="pick-tag">显示玻璃→封装玻璃延伸</span>
+        <span class="pick-stage orange">🔬 技术储备+产能建设</span>
+        <div class="pick-card-row"><strong>主营：</strong>玻璃基板制造</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>显示玻璃基板原片制造，向半导体封装玻璃基板延伸</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约413亿元</div>
+        <div class="pick-reason">显示玻璃基板原片制造经验可直接迁移至封装玻璃，是国产原片突破的核心标的。技术储备+产能建设阶段，一旦芯片级产品量产将填补国产原片空白。</div>
+      </div>
+
+      <!-- 沃格光电（下游） -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">沃格光电</span>
+          <span class="pick-card-code">603773.SH</span>
+        </div>
+        <span class="pick-tag">TGV全制程+光模块载板</span>
+        <span class="pick-stage yellow">🔬 中试/小批量送样</span>
+        <div class="pick-card-row"><strong>主营：</strong>精密玻璃加工</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV全制程工艺能力，深宽比100:1、最小孔径5μm；1.6T光模块玻璃基载板已批量送样；玻璃基Mini LED背光2304分区</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约339亿元</div>
+        <div class="pick-reason">1.6T光模块玻璃基载板已批量送样，直击AI算力光互连需求。Mini LED背光2304分区精准动态调光已实现，多应用场景布局降低单一市场风险。</div>
+      </div>
+
+      <!-- 蓝思科技（下游） -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">蓝思科技</span>
+          <span class="pick-card-code">300433.SZ</span>
+        </div>
+        <span class="pick-tag">TGV封装+HDD玻璃基板</span>
+        <span class="pick-stage yellow">🔬 中试加速/技术验证</span>
+        <div class="pick-card-row"><strong>主营：</strong>玻璃精密加工</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>TGV先进封装基板+HDD存储玻璃基板双线布局；攻克AI玻璃基板壁垒</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值数百亿级</div>
+        <div class="pick-reason">TGV先进封装+HDD存储双线布局，HDD玻璃基板已小批量交付提供收入支撑。中试加速阶段，3万㎡厂房年底投用将大幅提升产能，是下游应用端弹性最大的标的之一。</div>
+      </div>
+
+      <!-- 通富微电 -->
+      <div class="pick-card cn">
+        <div class="pick-card-head">
+          <span class="pick-card-name">通富微电</span>
+          <span class="pick-card-code">002156.SZ</span>
+        </div>
+        <span class="pick-tag">玻璃基板封测</span>
+        <span class="pick-stage orange">🔬 技术储备+封测能力建设</span>
+        <div class="pick-card-row"><strong>主营：</strong>半导体封测</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>玻璃基板封装相关技术储备，AMD深度绑定；具备玻璃基板封装能力</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值数百亿级</div>
+        <div class="pick-reason">AMD深度绑定，作为国内封测龙头将率先受益于玻璃基板规模化导入带来的封测订单增长。卡位AMD生态，是玻璃基板从制造走向应用的最后一环受益者。</div>
+      </div>
+    </div>
+
+    <div class="pick-group-title">🌍 全球 Top 5</div>
+    <div class="pick-card-grid">
+      <!-- Intel（下游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">Intel 英特尔</span>
+          <span class="pick-card-code">NASDAQ: INTC</span>
+        </div>
+        <span class="pick-tag">EMIB+玻璃芯封装</span>
+        <span class="pick-stage yellow">🔬 样品验证+量产基地建设</span>
+        <div class="pick-card-row"><strong>主营：</strong>CPU/芯片制造/代工</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>玻璃基板技术核心推动者，EMIB+玻璃芯样品展示，Rio Rancho量产基地+印度33亿美元建厂</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约1000亿美元</div>
+        <div class="pick-reason">玻璃基板路线图核心推动者，600+专利，EMIB+玻璃芯样品已展示。Rio Rancho量产基地建设中，虽转向外部采购但技术积累深厚，2026-2030年大规模应用将定义产业节奏。</div>
+      </div>
+
+      <!-- 康宁（下游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">康宁 Corning</span>
+          <span class="pick-card-code">NYSE: GLW</span>
+        </div>
+        <span class="pick-tag">低CTE玻璃+CPO方案</span>
+        <span class="pick-stage green">✅ 材料供应+CPO方案开发</span>
+        <div class="pick-card-row"><strong>主营：</strong>特种玻璃/光通信</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>低CTE玻璃材料供应商，与Intel/AMD合作；发布玻璃基板+光互连CPO架构；与京东方签署合作备忘录</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约300亿美元</div>
+        <div class="pick-reason">不仅是材料供应商，更是CPO架构方案定义者。玻璃基板+光互连CPO架构发布意味着康宁从材料端向应用端延伸，系统级方案能力构建更深护城河。</div>
+      </div>
+
+      <!-- SCHOTT -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">SCHOTT AG</span>
+          <span class="pick-card-code">私营（德国家族企业）</span>
+        </div>
+        <span class="pick-tag">特种玻璃/多chiplet集成</span>
+        <span class="pick-stage green">✅ 材料供应+技术合作</span>
+        <div class="pick-card-row"><strong>主营：</strong>特种玻璃</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>Glass Panels支持多chiplet集成，与Intel/AMD合作开发CTE优化玻璃芯；先进IC封装集成方案</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>营收约25亿欧元</div>
+        <div class="pick-reason">与Intel/AMD合作开发CTE优化玻璃芯，在多chiplet集成方案中技术领先。虽为私营企业无法直接投资，但其技术路线和合作方向是产业风向标，对投资决策具有重要参考价值。</div>
+      </div>
+
+      <!-- SKC/Absolics（下游） -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">SKC/Absolics</span>
+          <span class="pick-card-code">KRX: 011790</span>
+        </div>
+        <span class="pick-tag">510×515mm面板级基板</span>
+        <span class="pick-stage yellow">🔬 样品出货/2028量产</span>
+        <div class="pick-card-row"><strong>主营：</strong>化工/半导体材料</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>全球首个玻璃基板专用工厂（佐治亚州），获CHIPS法案7500万美元资助；510×515mm基板</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>SKC市值约30亿美元</div>
+        <div class="pick-reason">全球首个玻璃基板专用工厂已建成，获CHIPS法案7500万美元资助。510×515mm标准面板级基板对标AI芯片封装需求，2026年样品出货、2028年规模量产路线图清晰。</div>
+      </div>
+
+      <!-- AGC -->
+      <div class="pick-card global">
+        <div class="pick-card-head">
+          <span class="pick-card-name">AGC 旭硝子</span>
+          <span class="pick-card-code">TSE: 5201</span>
+        </div>
+        <span class="pick-tag">半导体封装玻璃基板</span>
+        <span class="pick-stage green">✅ 材料供应</span>
+        <div class="pick-card-row"><strong>主营：</strong>玻璃/化工</div>
+        <div class="pick-card-row"><strong>玻璃基板业务：</strong>半导体封装玻璃基板材料供应商，提供高平整度载板玻璃</div>
+        <div class="pick-card-row"><strong>市值/营收：</strong>市值约150亿美元</div>
+        <div class="pick-reason">全球三大玻璃原片巨头之一，提供高平整度载板玻璃。作为康宁/肖特之外的替代供应商，将受益于玻璃基板量产带来的材料需求多元化趋势。</div>
       </div>
     </div>
   </div>
